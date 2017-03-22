@@ -15,7 +15,12 @@ angular.module('starter')
                 url: '/finalizarpedido/:carroEscolhido',
                 templateUrl: 'template/finalizarpedido.html',
                 controller: 'FinalizarPedidoController'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'template/login.html',
+                controller: 'LoginController'
             });
 
-        $urlRouterProvider.otherwise('listagem');
+        $urlRouterProvider.otherwise('login');
     })

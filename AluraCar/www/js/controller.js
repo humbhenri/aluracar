@@ -49,4 +49,23 @@ angular.module('starter')
                 });
             });
         }
+    })
+    .controller('LoginController', function($scope, CarroService, $ionicPopup, $state) {
+        $scope.login = {};
+        $scope.fazerLogin = function() {
+            var dados = {
+                params: {
+                    email: $scope.login.email,
+                    senha: $scope.login.senha
+                }
+            }
+            CarroService.fazerLogin(dados).then(function(dados){
+                $state.go('listagem');
+            }, function(erro){
+                $ionicPopup.alert({
+                    title: 'Opa!',
+                    template: 'Email ou senha incorretos'
+                })
+            });
+        };
     });

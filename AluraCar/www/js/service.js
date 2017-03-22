@@ -13,8 +13,12 @@ angular.module('starter')
                 return $http.get(url + "salvarpedido", pedido).then(function (response) {
                     return "Deu certo."
                 });
-            }
-
+            },
+            fazerLogin: function (dados) {
+                return $http.get(url + 'login', dados).then(function (response){
+                    return response.data;
+                })
+            },
         }
 
     });
