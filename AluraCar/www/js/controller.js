@@ -41,7 +41,7 @@ angular.module('starter')
                 $ionicPopup.alert({
                     title: 'Parabéns',
                     template: 'Você acaba de comprar um carro.'
-                }).then(function() {$state.go('listagem')});    
+                }).then(function() {$state.go('listagem')});
             }, function(erro) {
                 $ionicPopup.alert({
                     title: 'Erro',
@@ -50,7 +50,8 @@ angular.module('starter')
             });
         }
     })
-    .controller('LoginController', function($scope, CarroService, $ionicPopup, $state) {
+    .controller('LoginController', function($scope, CarroService, $ionicPopup, $state, $rootScope) {
+        // login: joao@alura.com.br, senha: alura123
         $scope.login = {};
         $scope.fazerLogin = function() {
             var dados = {
@@ -59,7 +60,8 @@ angular.module('starter')
                     senha: $scope.login.senha
                 }
             }
-            CarroService.fazerLogin(dados).then(function(dados){
+            CarroService.fazerLogin(dados).then(function(dados) {
+                $rootScope.usuario = dados.usuario;
                 $state.go('app.listagem');
             }, function(erro){
                 $ionicPopup.alert({
@@ -68,4 +70,7 @@ angular.module('starter')
                 })
             });
         };
+    })
+    .controller('MenuController', function($scope, $rootScope) {
+        $scope.usuarioLogado = $rootScope.usuario;
     });

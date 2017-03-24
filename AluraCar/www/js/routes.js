@@ -1,9 +1,14 @@
 angular.module('starter')
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('listagem', {
+            .state('app', {
+                url: '/app',
+                templateUrl: 'template/menu.html',
+                abstract: true,
+                controller: 'MenuController'
+            })
+            .state('app.listagem', {
                 url: '/listagem',
-                
                 views: {
                     'menuContent' : {
                         templateUrl: 'template/listagem.html',
@@ -25,12 +30,8 @@ angular.module('starter')
                 url: '/login',
                 templateUrl: 'template/login.html',
                 controller: 'LoginController'
-            })
-            .state('app', {
-                url: '/app',
-                templateUrl: 'template/menu.html',
-                abstract: true
             });
+
 
         $urlRouterProvider.otherwise('login');
     })
