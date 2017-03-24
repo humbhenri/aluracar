@@ -71,6 +71,21 @@ angular.module('starter')
             });
         };
     })
-    .controller('MenuController', function($scope, $rootScope) {
+    .controller('MenuController', function($rootScope, $scope) {
         $scope.usuarioLogado = $rootScope.usuario;
+    })
+    .controller('PerfilController', function($rootScope, $scope) {
+        $scope.usuarioLogado = $rootScope.usuario;
+        $scope.estaEditando = false;
+        $scope.acaoBotao = function(){
+            if($scope.estaEditando) {
+            $scope.estaeditando = false;
+            $scope.textoBotao = 'Editar';
+            } else {
+                $scope.estaEditando = true;
+                $scope.textoBotao = 'Salvar';
+            }
+
+        };
+        $scope.textoBotao = 'Editar';
     });
