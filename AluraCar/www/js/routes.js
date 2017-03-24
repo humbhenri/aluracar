@@ -3,8 +3,13 @@ angular.module('starter')
         $stateProvider
             .state('listagem', {
                 url: '/listagem',
-                templateUrl: 'template/listagem.html',
-                controller: 'ListagemController'
+                
+                views: {
+                    'menuContent' : {
+                        templateUrl: 'template/listagem.html',
+                        controller: 'ListagemController',
+                    }
+                }
             })
             .state('carroescolhido', {
                 url: '/carroescolhido/:carro',
@@ -20,6 +25,11 @@ angular.module('starter')
                 url: '/login',
                 templateUrl: 'template/login.html',
                 controller: 'LoginController'
+            })
+            .state('app', {
+                url: '/app',
+                templateUrl: 'template/menu.html',
+                abstract: true
             });
 
         $urlRouterProvider.otherwise('login');

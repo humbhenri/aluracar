@@ -60,7 +60,7 @@ angular.module('starter')
                 }
             }
             CarroService.fazerLogin(dados).then(function(dados){
-                $state.go('listagem');
+                $state.go('app.listagem');
             }, function(erro){
                 $ionicPopup.alert({
                     title: 'Opa!',
