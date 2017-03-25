@@ -77,15 +77,9 @@ angular.module('starter')
     .controller('PerfilController', function($rootScope, $scope) {
         $scope.usuarioLogado = $rootScope.usuario;
         $scope.estaEditando = false;
-        $scope.acaoBotao = function(){
-            if($scope.estaEditando) {
-            $scope.estaeditando = false;
-            $scope.textoBotao = 'Editar';
-            } else {
-                $scope.estaEditando = true;
-                $scope.textoBotao = 'Salvar';
-            }
-
-        };
         $scope.textoBotao = 'Editar';
+        $scope.acaoBotao = function(){
+            $scope.estaEditando = !$scope.estaEditando;
+            $scope.textoBotao = $scope.estaEditando ? 'Editar' : 'Salvar';
+        };
     });
